@@ -24,7 +24,7 @@ const CardItem = ({ id, year, make, model, type, img, fuelConsumption, engineSiz
             | {functionalities[0]}</p>
         </div>
       </div>
-      <button className="bg-blue-700 text-white w-[100%] hover:bg-blue-500">Learn more</button>
+      <button className="bg-blue-700 text-white w-[100%] hover:bg-blue-500 p-3">Learn more</button>
     </li>
   )
 }
