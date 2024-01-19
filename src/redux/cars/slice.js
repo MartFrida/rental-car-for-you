@@ -10,11 +10,7 @@ const initialState = {
 const slice = createSlice({
 	name: 'cars',
 	initialState,
-	// reducers: {
-	// 	addArticle: (state, { payload }) => {
-	// 		state.items.push(payload)
-	// 	},
-	// },
+
 	extraReducers: builder => {
 		builder
 			.addCase(fetchCarsDataThunk.fulfilled, (state, { payload }) => {

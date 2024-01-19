@@ -4,6 +4,7 @@ const Catalog = () => {
   return (
     <>
       <Cards />
+      <button>Load more</button>
     </>
   )
 }

@@ -7,32 +7,17 @@ import { selectCars } from "../../redux/selectors"
 const Cards = () => {
   const dispatch = useDispatch()
   const cars = useSelector(selectCars)
-  console.log(cars)
   useEffect(() => {
     dispatch(fetchCarsDataThunk())
-
   }, [dispatch])
   return (
     <>
-      <ul className="grid gap-4 grid-cols-4 grid-rows-3 my-32">
-        {cars.map(item => <li key={item.id}><CardItem /></li>)}
-        {/* <CardItem />
-        <CardItem />
-        <CardItem />
-        <CardItem />
-        <CardItem />
-        <CardItem />
-        <CardItem />
-        <CardItem />
-        <CardItem />
-        <CardItem />
-        <CardItem />
-        <CardItem /> */}
+      <ul className="grid gap-x-[29px] gap-y-[50px] grid-cols-4 grid-rows-3 my-32">
+        {cars.map(item => <CardItem key={item.id} {...item} />)}
       </ul>
     </>
   )
 }
-
 export default Cards
 
 // display: grid;
