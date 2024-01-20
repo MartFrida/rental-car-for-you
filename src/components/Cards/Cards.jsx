@@ -12,7 +12,7 @@ const Cards = () => {
   }, [dispatch])
   return (
     <>
-      <ul className="grid gap-x-[29px] gap-y-[50px] grid-cols-4 grid-rows-3 my-32">
+      <ul className="grid gap-x-[29px] gap-y-[50px] grid-cols-4 grid-rows-3 mt-12">
         {cars.map(item => <CardItem key={item.id} {...item} />)}
       </ul>
     </>
