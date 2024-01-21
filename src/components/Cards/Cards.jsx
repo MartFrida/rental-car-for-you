@@ -2,15 +2,17 @@ import { useEffect } from "react"
 import CardItem from "../CardItem/CardItem"
 import { useDispatch, useSelector } from "react-redux"
 import { fetchCarsDataThunk } from "../../redux/cars/operations"
-import { selectCars } from "../../redux/selectors"
+import { selectCars, selectFilter, selectPage } from "../../redux/selectors"
 
 const Cards = () => {
   const dispatch = useDispatch()
   const cars = useSelector(selectCars)
+  const page = useSelector(selectPage)
+  const filter = useSelector(selectFilter)
 
   useEffect(() => {
-    dispatch(fetchCarsDataThunk({ page: 1 }))
-  }, [dispatch])
+    dispatch(fetchCarsDataThunk({ page: `${page}`, limit: 12, make: `${filter}` }))
+  }, [dispatch, filter, page])
   return (
     <>
       <ul className="grid gap-x-[29px] gap-y-[50px] grid-cols-4 grid-rows-3 mt-12">
