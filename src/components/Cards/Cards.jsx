@@ -7,8 +7,9 @@ import { selectCars } from "../../redux/selectors"
 const Cards = () => {
   const dispatch = useDispatch()
   const cars = useSelector(selectCars)
+
   useEffect(() => {
-    dispatch(fetchCarsDataThunk())
+    dispatch(fetchCarsDataThunk({ page: 1 }))
   }, [dispatch])
   return (
     <>
