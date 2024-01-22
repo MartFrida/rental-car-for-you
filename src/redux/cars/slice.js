@@ -32,7 +32,8 @@ const carsSlice = createSlice({
 		},
 		setFavorites: (state, { payload }) => {
 			state.favoriteItems.push(payload)
-		}
+		},
+
 	},
 	extraReducers: builder => {
 		builder
