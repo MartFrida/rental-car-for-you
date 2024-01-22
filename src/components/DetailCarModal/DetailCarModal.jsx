@@ -26,7 +26,7 @@ const DetailCarModal = ({ handleCloseModal, id, year, make, model, type, img, de
       <div className='relative w-[500px] bg-white p-6 rounded-3xl'>
         <BsX className='absolute top-1 right-1 w-8 h-8 cursor-pointer' onClick={handleCloseModal} />
         <div >
-          <img className='object-contain w-[  100%] h-[250px] rounded-xl' src={img} alt='/buick_enclave' loading="lazy" />
+          <img className='object-contain w-[100%] h-[250px] rounded-xl' src={img} alt='/buick_enclave' loading="lazy" />
         </div>
         <div className="flex flex-col justify-between ">
           <div className="text-base flex justify-between my-2">
