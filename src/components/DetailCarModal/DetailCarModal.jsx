@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import { BsX } from "react-icons/bs";
 
 const DetailCarModal = ({ handleCloseModal, id, year, make, model, type, img, description, fuelConsumption, engineSize, accessories, functionalities, rentalPrice, rentalCompany, address, rentalConditions, mileage }) => {
   const clickOutside = (e) => {
@@ -20,42 +21,36 @@ const DetailCarModal = ({ handleCloseModal, id, year, make, model, type, img, de
     )
   }, [handleCloseModal])
 
-  const currentYear = new Date().getFullYear()
   return (
-    // стилізувати
-    <div className='fixed flex justify-center items-center inset-0 w-screen bg-neutral-800/60 z-50' onClick={clickOutside}>
-      <div className='relative w-[500px] bg-white p-10 rounded-3xl'>
-        <div>
-          <img className='object-cover rounded-xl' src={img} alt='/buick_enclave' loading="lazy" />
+    <div className='fixed flex justify-center items-center inset-0 w-screen bg-neutral-800/60 z-50 ' onClick={clickOutside}>
+      <div className='relative w-[500px] bg-white p-6 rounded-3xl'>
+        <BsX className='absolute top-1 right-1 w-8 h-8 cursor-pointer' onClick={handleCloseModal} />
+        <div >
+          <img className='object-contain w-[  100%] h-[250px] rounded-xl' src={img} alt='/buick_enclave' loading="lazy" />
         </div>
         <div className="flex flex-col justify-between ">
-          <div className="text-base flex justify-between">
-            <p>{make} <span>{model}, </span>{year}</p>
+          <div className="text-base flex justify-between my-2">
+            <p>{make} <span className='text-blue-700'>{model}, </span>{year}</p>
             <p>{rentalPrice}</p>
           </div>
-          <div className="text-xs">
-            <p className="text-left">city | country | {rentalCompany}
-              {/* якщо в ацессорі є слово преміум, то вставляємо останнім, якщо ні-то нічого */}
-              | {accessories[0]}</p>
-            <p className="text-left">{type} | {model} | {id}
-              {/* по масиву вибрати рандомно */}
-              | {functionalities[0]}</p>
+          <div className="text-xs mb-2 text-gray-500 ">
+            <p className="text-left tracking-wider leading-4"> {address?.split(',')[1]} |  {address?.split(',')[2] || 'Ukraine'} | Id:{id} | Year:{year} | Type:{type}</p>
+            <p className="text-left tracking-wider leading-4"> FuelConsumption: {fuelConsumption} | EngineSize:{engineSize}</p>
           </div>
-          <p>{description}</p>
-          <div>Accessories and functionalities:
-            {/* роздільна риска */}
-            <ul className='flex'>
-              {accessories.map(item => <li>{item}</li>)}
+          <p className='text-left mb-4 font-normal '>{description}</p>
+          <div >
+            <p className='font-medium leading-7 text-left text-black'>Accessories and functionalities:</p>
+            <ul className='flex flex-row'>
+              {accessories.map(item => <li className='text-xs mb-2 text-gray-500 tracking-wider' key={item}> {item} |</li>)}
             </ul>
-            <ul className='flex'>{functionalities.map(item => <li>{item}</li>)}
+            <ul className='flex flex-row flex-wrap '>{functionalities.map(item => <li className='text-xs mb-2 text-gray-500 tracking-wider' key={item}> {item} |</li>)}
             </ul>
           </div>
-          <ul className='flex flex-wrap justify-between'>Rental Conditions:
-            <li>Minimum age: <span>25</span></li>
-            <li>Valid driver’s license</li>
-            <li>Security deposite required</li>
-            <li>Mileage: <span>{mileage}</span></li>
-            <li>Price: <span>{rentalPrice}</span></li>
+          <p className='font-medium leading-7 text-left text-black'>Rental Conditions:</p>
+          <ul className='flex flex-wrap justify-between'>
+            {rentalConditions?.split('\n').map(item => <li key={item} className='bg-zinc-100 text-base p-2 rounded-xl m-1'>{item}</li>)}
+            <li className='bg-zinc-100 text-base p-2 rounded-xl'>Mileage: <span className='text-blue-700'>{mileage}</span></li>
+            <li className='bg-zinc-100 text-base p-2 rounded-xl'>Price: <span className='text-blue-700'>{rentalPrice}</span></li>
           </ul>
 
         </div>

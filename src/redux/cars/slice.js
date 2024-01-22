@@ -4,12 +4,7 @@ import { fetchCarsDataThunk } from './operations'
 const initialState = {
 	items: [],
 	favoriteItems: [],
-	filter: {
-		brand: '',
-		price: '',
-		mileageFrom: 0,
-		mileageTo: 1000,
-	},
+	filter: '',
 	page: 1,
 	limit: 12,
 	skip: 24,
@@ -22,10 +17,7 @@ const carsSlice = createSlice({
 	initialState,
 	reducers: {
 		setFilter: (state, { payload }) => {
-			state.filter.brand = payload.brand
-			state.filter.price = payload.price
-			state.filter.mileageFrom = payload.mileageFrom
-			state.filter.mileageTo = payload.mileageTo
+			state.filter = payload
 		},
 		setSkip: (state) => {
 			state.skip += state.limit
