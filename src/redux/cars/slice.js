@@ -32,6 +32,13 @@ const carsSlice = createSlice({
 			.addCase(fetchCarsDataThunk.fulfilled, (state, { payload }) => {
 				state.items = payload
 			})
+			.addCase(fetchCarsDataThunk.pending, state => {
+				state.loading = true
+			})
+			.addCase(fetchCarsDataThunk.rejected, (state, { payload }) => {
+				state.loading = false
+				state.error = payload
+			})
 	},
 })
 

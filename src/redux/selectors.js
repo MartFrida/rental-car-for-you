@@ -1,4 +1,6 @@
 export const selectCars = state => state.carData.items;
+export const selectLoading = state => state.carData.loading;
+export const selectError = state => state.carData.error;
 export const selectPage = state => state.carData.page;
 export const selectLimit = state => state.carData.limit;
 export const selectSkip = state => state.carData.skip;
