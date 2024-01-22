@@ -1,4 +1,9 @@
 export const selectCars = state => state.carData.items;
 export const selectPage = state => state.carData.page;
 export const selectLimit = state => state.carData.limit;
+export const selectSkip = state => state.carData.skip;
 export const selectFilter = state => state.carData.filter;
+export const selectFilterBrand = state => state.carData.filter.brand;
+export const selectFilterPrice = state => state.carData.filter.rentalPrice;
+export const selectFilterMileageFrom = state => state.carData.filter.mileageFrom;
+export const selectFilterMileageTo = state => state.carData.filter.mileageTo;

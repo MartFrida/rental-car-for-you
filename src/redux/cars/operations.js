@@ -16,3 +16,5 @@ export const fetchCarsDataThunk = createAsyncThunk('car/fetchAll', async (config
 	}
 })
 
+
+

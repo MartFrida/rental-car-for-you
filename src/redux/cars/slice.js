@@ -3,9 +3,16 @@ import { fetchCarsDataThunk } from './operations'
 
 const initialState = {
 	items: [],
-	filter: '',
+	favoriteItems: [],
+	filter: {
+		brand: '',
+		price: '',
+		mileageFrom: 0,
+		mileageTo: 1000,
+	},
 	page: 1,
 	limit: 12,
+	skip: 24,
 	loading: false,
 	error: null,
 }
@@ -15,8 +22,14 @@ const carsSlice = createSlice({
 	initialState,
 	reducers: {
 		setFilter: (state, { payload }) => {
-			state.filter = payload
+			state.filter.brand = payload.brand
+			state.filter.price = payload.price
+			state.filter.mileageFrom = payload.mileageFrom
+			state.filter.mileageTo = payload.mileageTo
 		},
+		setSkip: (state) => {
+			state.skip += state.limit
+		}
 	},
 	extraReducers: builder => {
 		builder
@@ -27,5 +40,5 @@ const carsSlice = createSlice({
 
 	},
 })
-export const { setFilter } = carsSlice.actions
+export const { setFilter, setSkip } = carsSlice.actions
 export const carReducer = carsSlice.reducer
