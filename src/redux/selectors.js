@@ -7,3 +7,4 @@ export const selectFilterBrand = state => state.carData.filter.brand;
 export const selectFilterPrice = state => state.carData.filter.rentalPrice;
 export const selectFilterMileageFrom = state => state.carData.filter.mileageFrom;
 export const selectFilterMileageTo = state => state.carData.filter.mileageTo;
+export const selectFavorites = state => state.carData.favoriteItems;

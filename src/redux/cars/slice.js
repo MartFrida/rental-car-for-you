@@ -29,6 +29,9 @@ const carsSlice = createSlice({
 		},
 		setSkip: (state) => {
 			state.skip += state.limit
+		},
+		setFavorites: (state, { payload }) => {
+			state.favoriteItems.push(payload)
 		}
 	},
 	extraReducers: builder => {
@@ -36,9 +39,8 @@ const carsSlice = createSlice({
 			.addCase(fetchCarsDataThunk.fulfilled, (state, { payload }) => {
 				state.items = payload
 			})
-
-
 	},
 })
-export const { setFilter, setSkip } = carsSlice.actions
+
+export const { setFilter, setSkip, setFavorites } = carsSlice.actions
 export const carReducer = carsSlice.reducer
