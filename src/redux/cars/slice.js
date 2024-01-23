@@ -31,6 +31,7 @@ const carsSlice = createSlice({
 		builder
 			.addCase(fetchCarsDataThunk.fulfilled, (state, { payload }) => {
 				state.items = payload
+				state.loading = false
 			})
 			.addCase(fetchCarsDataThunk.pending, state => {
 				state.loading = true
