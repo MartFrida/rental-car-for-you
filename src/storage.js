@@ -21,4 +21,13 @@ export const removeFromLocalStorage = (key) => {
   localStorage.removeItem(key)
 }
 
+export const showLocalStorage = () => {
+  const arrayLocalStorage = []
+  for (var i = 0, len = localStorage.length; i < len; i++) {
+    let key = localStorage.key(i)
+    let value = loadFromLocalStorage(key)
+    arrayLocalStorage.push(value)
+  }
+  return arrayLocalStorage
+}
 
