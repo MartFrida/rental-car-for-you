@@ -30,9 +30,10 @@ const CardItem = ({ id, year, make, model, type, img, description, fuelConsumpti
   const handleAddToFavorite = (currentCar) => {
     setCurrentCar(car)
     dispatch(setFavorites(currentCar))
+    alert('added to favorite')
     console.log(car)
     saveToLocalStorage(currentCar.id, currentCar)
-    console.log(localStorage)
+    console.log(localStorage.length)
   }
 
 
