@@ -1,7 +1,5 @@
 import { useEffect, useState } from 'react'
 import DetailCarModal from '../DetailCarModal/DetailCarModal'
-import { useDispatch } from 'react-redux'
-import { setFavorites } from '../../redux/cars/slice'
 import { removeFromLocalStorage, saveToLocalStorage } from '../../storage'
 import { BsHeart, BsHeartFill } from 'react-icons/bs'
 
@@ -12,7 +10,6 @@ const CardItem = ({ id, year, make, model, type, img, description, fuelConsumpti
   const [isOpenModal, setIsOpenModal] = useState(false)
   const [currentCar, setCurrentCar] = useState(null)
   const [isFavorite, setIsFavorite] = useState(false);
-  const dispatch = useDispatch()
 
   useEffect(() => {
     isOpenModal ? document.body.style.overflow = 'hidden' : document.body.style.overflow = 'visible'
@@ -26,8 +23,6 @@ const CardItem = ({ id, year, make, model, type, img, description, fuelConsumpti
   }
 
   const handleAddToFavorite = (currentCar) => {
-    setCurrentCar(car)
-    dispatch(setFavorites(currentCar))
     saveToLocalStorage(currentCar.id, currentCar)
     setIsFavorite(true)
   }
