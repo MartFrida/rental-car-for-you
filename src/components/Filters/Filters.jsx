@@ -35,10 +35,6 @@ const Filters = () => {
 
   const { register, handleSubmit, reset } = useForm()
   const submit = data => {
-    // brand:""
-    // mileageFrom:0
-    // mileageTo:1000
-    // price:""
     (data.brand === 'All brands') ? dispatch(setFilter('')) : dispatch(setFilter(data.brand))
     // reset()
   }

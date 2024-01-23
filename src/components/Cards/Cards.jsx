@@ -3,6 +3,7 @@ import CardItem from "../CardItem/CardItem"
 import { useDispatch, useSelector } from "react-redux"
 import { fetchCarsDataThunk } from "../../redux/cars/operations"
 import { selectCars, selectError, selectFilter, selectLimit, selectLoading, selectPage } from "../../redux/selectors"
+import { Loader } from "../Loader/Loader"
 
 const Cards = () => {
   const dispatch = useDispatch()
@@ -23,7 +24,7 @@ const Cards = () => {
         {cars.map(item => <CardItem key={item.id} {...item} />)}
       </ul>
 
-      {loading && <h1>Loading....</h1>}
+      {loading && <Loader />}
       {error && <h1>{error}</h1>}
     </>
   )
