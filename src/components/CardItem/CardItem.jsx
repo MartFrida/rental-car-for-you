@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react'
 import DetailCarModal from '../DetailCarModal/DetailCarModal'
 import { removeFromLocalStorage, saveToLocalStorage } from '../../storage'
-import { BsHeart, BsHeartFill } from 'react-icons/bs'
+import FavoriteCheckbox from '../FavoriteCheckbox/FavoriteCheckbox'
+// import { BsHeart, BsHeartFill } from 'react-icons/bs'
+
 
 const CardItem = ({ id, year, make, model, type, img, description, fuelConsumption, engineSize, accessories, functionalities, rentalPrice, rentalCompany, address, rentalConditions, mileage }) => {
 
@@ -38,8 +40,8 @@ const CardItem = ({ id, year, make, model, type, img, description, fuelConsumpti
         <div className="hover:scale-105 duration-100 relative">
           <img className='object-cover h-[268px] rounded-xl' src={img} alt={model} loading="lazy" />
 
-          {!isFavorite ? <BsHeart onClick={() => handleAddToFavorite(car)} className='absolute top-3.5 right-3.5 cursor-pointer text-white' /> : <BsHeartFill onClick={() => handleDelFromFavorite(car)} className='absolute top-3.5 right-3.5 cursor-pointer text-white' />}
-
+          {/* {!isFavorite ? <BsHeart onClick={() => handleAddToFavorite(car)} className='absolute top-3.5 right-3.5 cursor-pointer text-white' /> : <BsHeartFill onClick={() => handleDelFromFavorite(car)} className='absolute top-3.5 right-3.5 cursor-pointer text-white' />} */}
+          <FavoriteCheckbox car={car} className='absolute top-3.5 right-3.5 text-white' />
         </div>
         <div className="flex flex-col justify-between ">
           <div className="text-base flex justify-between">

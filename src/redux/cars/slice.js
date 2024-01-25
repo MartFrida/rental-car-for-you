@@ -22,9 +22,13 @@ const carsSlice = createSlice({
 		setSkip: (state) => {
 			state.skip += state.limit
 		},
-		setFavorites: (state, { payload }) => {
+		setToFavorites: (state, { payload }) => {
 			state.favoriteItems.push(payload)
 		},
+		deleteFromFavorites: (state, { payload }) => {
+			const index = state.favoriteItems.findIndex(car => car.id === payload)
+			state.favoriteItems.splice(index, 1)
+		}
 	},
 	extraReducers: builder => {
 		builder
@@ -42,5 +46,5 @@ const carsSlice = createSlice({
 	},
 })
 
-export const { setFilter, setSkip, setFavorites } = carsSlice.actions
+export const { setFilter, setSkip, setToFavorites, deleteFromFavorites } = carsSlice.actions
 export const carReducer = carsSlice.reducer
