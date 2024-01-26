@@ -14,9 +14,10 @@ import storage from 'redux-persist/lib/storage'
 
 
 const persistConfig = {
-  key: 'root',
+  key: 'favorites',
   version: 1,
   storage,
+  whitelist: ['favoriteItems']
 }
 
 const rootReducer = combineReducers({
