@@ -16,10 +16,10 @@ const FavoriteCheckbox = ({ car }) => {
   const label = { inputProps: { 'arial-label': 'Favorite checkbox' } }
 
   return (
-    <Checkbox
+    <Checkbox className='absolute top-[2rem] right-[-6.5rem] text-white'
       {...label}
-      icon={<BsHeart />}
-      checkedIcon={<BsHeartFill />}
+      icon={<BsHeart className='text-white' />}
+      checkedIcon={<BsHeartFill className='fill-white' />}
       id={crypto.randomUUID()}
       checked={favoriteCars.some(favoriteCar => favoriteCar.id === car.id)}
       onChange={e => { setFavoriteStatus(car, e.target.checked) }}

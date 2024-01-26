@@ -1,10 +1,9 @@
 import CardItem from "../../components/CardItem/CardItem"
 import Cards from "../../components/Cards/Cards"
-import { showLocalStorage } from "../../storage"
+
 
 const Favorites = () => {
 
-  // const favoritesLS = showLocalStorage()
 
   return (
     <>

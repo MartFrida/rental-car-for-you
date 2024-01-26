@@ -1,5 +1,4 @@
-import { combineReducers, configureStore } from "@reduxjs/toolkit"
-import { carReducer } from "./cars/slice"
+import { configureStore } from '@reduxjs/toolkit'
 import {
   persistStore,
   persistReducer,
@@ -11,7 +10,10 @@ import {
   REGISTER,
 } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
+import { PersistGate } from 'redux-persist/integration/react'
 
+import App from './App'
+import rootReducer from './reducers'
 
 const persistConfig = {
   key: 'root',
@@ -19,12 +21,9 @@ const persistConfig = {
   storage,
 }
 
-const rootReducer = combineReducers({
-  carData: carReducer,
-})
 const persistedReducer = persistReducer(persistConfig, rootReducer)
 
-export const store = configureStore({
+const store = configureStore({
   reducer: persistedReducer,
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
@@ -32,7 +31,15 @@ export const store = configureStore({
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
     }),
-  devTools: process.env.NODE_ENV !== 'production',
 })
 
-export const persistor = persistStore(store)
+let persistor = persistStore(store)
+
+ReactDOM.render(
+  <Provider store={store}>
+    <PersistGate loading={null} persistor={persistor}>
+      <App />
+    </PersistGate>
+  </Provider>,
+  document.getElementById('root')
+)
