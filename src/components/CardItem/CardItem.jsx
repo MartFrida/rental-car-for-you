@@ -33,12 +33,12 @@ const CardItem = ({ id, year, make, model, type, img, description, fuelConsumpti
 
   return (
     <>
-      <li className="h-[426px] flex flex-col justify-between ">
-        <div className="hover:scale-105 duration-100 relative">
+      <li className="flex flex-col justify-between">
+        <div className="hover:scale-105 duration-100 relative pt-0 ">
           <FavoriteCheckbox car={car} />
           <img className='object-cover h-[268px] rounded-xl' src={img} alt={model} loading="lazy" />
         </div>
-        <div className="flex flex-col justify-between ">
+        <div className="flex flex-col justify-between mt-1">
           <div className="text-base flex justify-between">
             <p>{make} <span className='text-blue-700'>{model}, </span>{year}</p>
             <p>{rentalPrice}</p>

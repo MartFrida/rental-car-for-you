@@ -5,7 +5,7 @@ axios.defaults.baseURL = 'https://65a98bd7219bfa37186970af.mockapi.io/'
 
 export const fetchCarsDataThunk = createAsyncThunk('car/fetchAll', async (configParams, thunkApi) => {
 	try {
-		const { data } = await axios.get('car', {
+		const { data } = await axios.get('cars', {
 			params: {
 				...configParams,
 			}
