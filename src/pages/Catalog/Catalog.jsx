@@ -4,6 +4,8 @@ import Filters from "../../components/Filters/Filters"
 import { selectCars, selectSkip } from '../../redux/selectors'
 import { fetchCarsDataThunk } from "../../redux/cars/operations"
 import { setSkip } from "../../redux/cars/slice"
+import { Container } from "@mui/material"
+
 
 const Catalog = () => {
   const dispatch = useDispatch()
@@ -16,11 +18,11 @@ const Catalog = () => {
 
   }
   return (
-    <>
+    <Container>
       <Filters />
       <Cards />
       {cars.length >= 12 ? <button className="my-20 text-blue-700 bg-transparent hover:text-blue-900 p-5 " onClick={handleLoadMore}>Load more</button> : null}
-    </>
+    </Container>
   )
 }
 
