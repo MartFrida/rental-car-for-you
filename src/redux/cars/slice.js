@@ -26,7 +26,7 @@ const carsSlice = createSlice({
 			state.favoriteItems.push(payload)
 		},
 		deleteFromFavorites: (state, { payload }) => {
-			const index = state.favoriteItems.findIndex(car => car.id === payload)
+			const index = state.favoriteItems.findIndex(car => car.id === payload.id)
 			state.favoriteItems.splice(index, 1)
 			// state.favoriteItems = state.favoriteItems.filter(item => item.id !== payload)
 		}

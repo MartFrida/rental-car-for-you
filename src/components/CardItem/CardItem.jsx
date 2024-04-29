@@ -23,13 +23,13 @@ const CardItem = ({ id, year, make, model, type, img, description, fuelConsumpti
     setIsOpenModal(true)
   }
 
-  const handleAddToFavorite = (currentCar) => {
-    setIsFavorite(true)
-  }
+  // const handleAddToFavorite = (currentCar) => {
+  //   setIsFavorite(true)
+  // }
 
-  const handleDelFromFavorite = (currentCar) => {
-    setIsFavorite(false)
-  }
+  // const handleDelFromFavorite = (currentCar) => {
+  //   setIsFavorite(false)
+  // }
 
   return (
     <>
