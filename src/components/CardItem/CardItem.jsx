@@ -50,7 +50,7 @@ const CardItem = ({ id, year, make, model, type, img, description, fuelConsumpti
               | {functionalities[0]}</p>
           </div>
         </div>
-        <button className="bg-blue-700 text-white w-[100%] hover:bg-blue-500 p-3" onClick={() => handleClickLearnMore(car)}>Learn more</button>
+        <button className="bg-butprimary text-white w-[100%] hover:bg-blue-500 p-3" onClick={() => handleClickLearnMore(car)}>Learn more</button>
       </li>
       {isOpenModal ? <DetailCarModal handleCloseModal={handleCloseModal} {...car} /> : null}
     </>

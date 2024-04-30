@@ -16,7 +16,7 @@ const FavoriteCheckbox = ({ car }) => {
   const label = { inputProps: { 'arial-label': 'Favorite checkbox' } }
 
   return (
-    <Checkbox className='absolute top-[2rem] right-[-6.5rem] text-white'
+    <Checkbox className='absolute top-[2rem] right-[-12rem] text-white'
       {...label}
       icon={<BsHeart className='text-white' />}
       checkedIcon={<BsHeartFill className='fill-white' />}

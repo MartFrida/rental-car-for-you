@@ -21,7 +21,7 @@ const Catalog = () => {
     <Container>
       <Filters />
       <Cards />
-      {cars.length >= 12 ? <button className="my-20 text-blue-700 bg-transparent hover:text-blue-900 p-5 " onClick={handleLoadMore}>Load more</button> : null}
+      {cars.length >= 12 ? <button className="my-20 bg-butprimary bg-transparent hover:text-blue-900 p-5 " onClick={handleLoadMore}>Load more</button> : null}
     </Container>
   )
 }
