@@ -1,58 +1,68 @@
-import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { selectFilter } from '../../redux/selectors'
-import { setFilter } from '../../redux/cars/slice'
-import { useForm } from 'react-hook-form'
+import React, { useState } from "react"
+import { useForm, Controller } from "react-hook-form"
+import { useDispatch, useSelector } from "react-redux"
+import ReactSelect from "react-select"
+import { setFilter } from "../../redux/cars/slice"
+import { selectFilter } from "../../redux/selectors"
 
-const brands = [
-  "All brands",
-  "Buick",
-  "Volvo",
-  "HUMMER",
-  "Subaru",
-  "Mitsubishi",
-  "Nissan",
-  "Lincoln",
-  "GMC",
-  "Hyundai",
-  "MINI",
-  "Bentley",
-  "Mercedes-Benz",
-  "Aston Martin",
-  "Pontiac",
-  "Lamborghini",
-  "Audi",
-  "BMW",
-  "Chevrolet",
-  "Chrysler",
-  "Kia",
-  "Land"
+const makes = [
+  { value: "All brands", label: "All brands" },
+  { value: "Buick", label: "Buick" },
+  { value: "Volvo", label: "Volvo" },
+  { value: "HUMMER", label: "HUMMER" },
+  { value: "Subaru", label: "Subaru" },
+  { value: "Mitsubishi", label: "Mitsubishi" },
+  { value: "Nissan", label: "Nissan" },
+  { value: "Lincoln", label: "Lincoln" },
+  { value: "GMC", label: "GMC" },
+  { value: "Hyundai", label: "Hyundai" },
+  { value: "MINI", label: "MINI" },
+  { value: "Bentley", label: "Bentley" },
+  { value: "Mercedes-Benz", label: "Mercedes-Benz" },
+  { value: "Aston Martin", label: "Aston Martin" },
+  { value: "Pontiac", label: "Pontiac" },
+  { value: "Lamborghini", label: "Lamborghini" },
+  { value: "BMW", label: "BMW" },
+  { value: "Chevrolet", label: "Chevrolet" },
+  { value: "Chrysler", label: "Chrysler" },
+  { value: "Kia", label: "Kia" },
+  { value: "Land", label: "Land" },
 ]
 
-const Filters = () => {
+const defaultValues = {
+  brandFilter: { value: "All brands", label: "All brands" },
+}
+
+const FiltersL = () => {
+  const { handleSubmit, reset, register, control } = useForm();
   const filter = useSelector(selectFilter)
   const dispatch = useDispatch()
-
-  const { register, handleSubmit, reset } = useForm()
   const submit = data => {
-    (data.brand === 'All brands') ? dispatch(setFilter('')) : dispatch(setFilter(data.brand))
-    // reset()
+    return (data.CarBrand.value === 'All brands') ? dispatch(setFilter('')) : dispatch(setFilter(data.CarBrand.value))
   }
 
   return (
-    <form onSubmit={handleSubmit(submit)} className='mt-20 flex justify-center items-end w-[90%] mx-auto gap-4'>
-      <label className='flex flex-col items-start text-sm'>Car brand
-        <select className='bg-zinc-100 text-base p-4 rounded-xl' {...register('brand')} >
-          {brands.map(brand => <option key={brand}>{brand}</option>)}
-        </select>
-      </label>
-      <button className="bg-blue-700 text-white  hover:bg-blue-500 p-3 px-11">Search</button>
+    <form onSubmit={handleSubmit(submit)} className="form mt-20">
+      <section>
+        <label>Car Brand</label>
+        <Controller
+          name="CarBrand"
+          control={control}
+          render={({ field }) => (
+            <ReactSelect className='shadow-md '
+              {...register('CarBrand')}
+              {...field}
+              options={makes}
+            />
+          )}
+        />
+      </section>
+      <button className="bg-butprimary text-white hover:bg-blue-500 p-3 px-11 mt-4">Search</button>
     </form>
   )
 }
 
-export default Filters
-
+export default FiltersL
 
 // brand:""
 // mileageFrom:0
