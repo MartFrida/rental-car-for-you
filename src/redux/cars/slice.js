@@ -17,6 +17,7 @@ const carsSlice = createSlice({
 	initialState,
 	reducers: {
 		setFilter: (state, { payload }) => {
+			console.log(payload)
 			state.filter = payload
 		},
 		setSkip: (state) => {

@@ -33,7 +33,7 @@ const defaultValues = {
   brandFilter: { value: "All brands", label: "All brands" },
 }
 
-const FiltersL = () => {
+const Filters = () => {
   const { handleSubmit, reset, register, control } = useForm();
   const filter = useSelector(selectFilter)
   const dispatch = useDispatch()
@@ -62,7 +62,7 @@ const FiltersL = () => {
   )
 }
 
-export default FiltersL
+export default Filters
 
 // brand:""
 // mileageFrom:0

@@ -11,6 +11,7 @@ function App() {
       <Header />
       <Routes>
         <Route path='/' element={<Home />} />
+        <Route index element={<Home />} />
         <Route path='/catalog' element={<Catalog />} />
         <Route path='/favorites' element={<Favorites />} />
         <Route path='*' element={<Home />} />
