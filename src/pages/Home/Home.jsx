@@ -11,6 +11,7 @@ const Home = () => {
       </div>
 
       <Link to='/catalog' className='absolute bottom-5 right-5  bg-blue-950 text-white    transition  duration-300 ease-in-out hover:bg-butprimary  p-4 lg:p-5 font-semibold text-2xl rounded-xl'>Let's Go</Link>
+
     </div>
   )
 }

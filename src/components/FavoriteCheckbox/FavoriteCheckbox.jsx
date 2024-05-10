@@ -16,8 +16,8 @@ const FavoriteCheckbox = ({ car }) => {
   const label = { inputProps: { 'arial-label': 'Favorite checkbox' } }
 
   return (
-    <Checkbox className='absolute top-[2rem] right-[-12rem] text-white'
-      {...label}
+    <Checkbox className='text-white'
+
       icon={<BsHeart className='text-white' />}
       checkedIcon={<BsHeartFill className='fill-white' />}
       id={crypto.randomUUID()}

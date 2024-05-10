@@ -11,16 +11,15 @@ module.exports = {
       'xl': '1280px',
       '2xl': '1536px',
     },
-    colors: {
-      'header': '#07080B',
-      'primary': '#14213D',
-      'butprimary': '#289638',
-      'background': '#E5E5E5',
-      transparent: 'transparent',
-      black: '#000',
-      white: '#fff',
-
-    },
+    // colors: {
+    //   'header': '#07080B',
+    //   'primary': '#14213D',
+    //   'butprimary': '#289638',
+    //   'background': '#E5E5E5',
+    //   transparent: 'transparent',
+    //   black: '#000',
+    //   white: '#fff',
+    // },
     extend: {
       backgroundImage: {
         'heropattern': "url('/img/car-leaving-smartphone.jpg')",
