@@ -12,6 +12,7 @@ import {
   REGISTER,
 } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
+import { authReducer } from "./auth/slice"
 
 const persistConfig = {
   key: 'favorites',
@@ -23,6 +24,7 @@ const persistConfig = {
 const rootReducer = combineReducers({
   carData: carReducer,
   filters: filterReducer,
+  auth: authReducer,
 })
 const persistedReducer = persistReducer(persistConfig, rootReducer)
 
