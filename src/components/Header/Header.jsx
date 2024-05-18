@@ -8,7 +8,7 @@ const Header = () => {
         <NavLink to='/' className='text-white font-bold text-center transition-colors duration-300 '>
           <img className="h-8" src={logo} alt='logo' />
         </NavLink>
-        <div className="flex justify-between  md:w-[60%] lg:w-[35%] 2xl:w-[15%]">
+        <div className="flex justify-between md:w-[80%] lg:w-[55%] 2xl:w-[25%]">
           <NavLink className='text-white mr-6 transition-colors duration-300 font-medium hover:font-bold' to='/catalog'>
             Catalog
           </NavLink>

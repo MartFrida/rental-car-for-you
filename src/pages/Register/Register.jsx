@@ -1,11 +1,15 @@
 import React from "react";
 import Modal from "../../components/Modal/Modal";
 import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
+import { registerThunk } from "../../redux/auth/operations";
 
 const Register = () => {
   const { register, handleSubmit } = useForm();
+  const dispatch = useDispatch();
   const submit = (data) => {
     console.log(data);
+    dispatch(registerThunk(data));
   };
   return (
     <Modal>
