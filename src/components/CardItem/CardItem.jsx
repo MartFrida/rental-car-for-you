@@ -2,9 +2,9 @@ import { useEffect, useState } from 'react'
 import DetailCarModal from '../DetailCarModal/DetailCarModal'
 import FavoriteCheckbox from '../FavoriteCheckbox/FavoriteCheckbox'
 
-const CardItem = ({ id, year, make, model, type, img, description, fuelConsumption, engineSize, accessories, functionalities, rentalPrice, rentalCompany, address, rentalConditions, mileage }) => {
+const CardItem = ({ _id, year, make, model, type, img, description, fuelConsumption, engineSize, accessories, functionalities, rentalPrice, rentalCompany, address, rentalConditions, mileage }) => {
 
-  const car = { id, year, make, model, type, img, description, fuelConsumption, engineSize, accessories, functionalities, rentalPrice, rentalCompany, address, rentalConditions, mileage }
+  const car = { _id, year, make, model, type, img, description, fuelConsumption, engineSize, accessories, functionalities, rentalPrice, rentalCompany, address, rentalConditions, mileage }
 
   const [isOpenModal, setIsOpenModal] = useState(false)
   const [currentCar, setCurrentCar] = useState(null)
@@ -34,7 +34,7 @@ const CardItem = ({ id, year, make, model, type, img, description, fuelConsumpti
           <div className="text-xs">
             <p className="text-left"> {(address?.split(',')[1])} |{address?.split(',')[2] || 'Ukraine'} | {rentalCompany}
               | {accessories[0]}</p>
-            <p className="text-left">{type} | {model} | {id}
+            <p className="text-left">{type} | {model} | {_id}
               | {functionalities[0]}</p>
           </div>
         </div>

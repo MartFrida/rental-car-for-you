@@ -4,8 +4,10 @@ import { useDispatch, useSelector } from 'react-redux'
 import { selectFavorites } from '../../redux/selectors'
 import { deleteFromFavorites, setToFavorites } from '../../redux/cars/slice'
 import { Checkbox } from '@mui/material'
+import { nanoid } from 'nanoid'
 
 const FavoriteCheckbox = ({ car }) => {
+
   const dispatch = useDispatch()
   const favoriteCars = useSelector(selectFavorites)
 
@@ -17,11 +19,10 @@ const FavoriteCheckbox = ({ car }) => {
 
   return (
     <Checkbox className='text-white'
-
       icon={<BsHeart className='text-white' />}
       checkedIcon={<BsHeartFill className='fill-white' />}
-      id={crypto.randomUUID()}
-      checked={favoriteCars.some(favoriteCar => favoriteCar.id === car.id)}
+      _id={nanoid()}
+      checked={favoriteCars.some(favoriteCar => favoriteCar._id === car._id)}
       onChange={e => { setFavoriteStatus(car, e.target.checked) }}
     />
   )

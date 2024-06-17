@@ -24,7 +24,7 @@ const Cards = ({ onlyFavorites = false }) => {
   return (
     <>
       <ul className="grid gap-x-[29px] gap-y-[50px] mt-12 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2">
-        {carsNew.map(item => <CardItem key={item.id} {...item} />)}
+        {carsNew?.map(item => <CardItem key={item._id} {...item} />)}
       </ul>
 
       {loading && <Loader />}

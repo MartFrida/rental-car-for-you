@@ -1,9 +1,9 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
-import { api } from '../../configAxios/api'
+import { api, carInstance } from '../../configAxios/api'
 
 export const fetchCarsDataThunk = createAsyncThunk('car/fetchAll', async (configParams, thunkApi) => {
 	try {
-		const { data } = await api.get('cars', {
+		const { data } = await carInstance.get('cars', {
 
 			params: {
 				...configParams,

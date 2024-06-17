@@ -6,10 +6,10 @@ export const api = axios.create({
 })
 
 export const carInstance = axios.create({
-  baseURL: import.meta.env.VITE_API_URL
+  baseURL: import.meta.env.VITE_FILE_URL
 })
 
-export const fetchAllCars = async () => {
-  const { data } = await carInstance.get('/')
-  return data
-}
+// export const fetchAllCars = async () => {
+//   const { data } = await carInstance.get('/')
+//   return data
+// }
