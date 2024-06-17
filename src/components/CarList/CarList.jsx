@@ -7,16 +7,16 @@ const CarList = () => {
   useEffect(() => {
     const fetchCars = async () => {
       try {
-        const data = await fetchAllCars()
-        setCars(data)
+        const { result } = await fetchAllCars()
+        setCars(result)
       } catch (error) {
         console.log(error.message)
       }
     }
     fetchCars()
   }, [])
-
-  const elements = cars.map(({ id, make }) => <li>{make}</li>)
+  console.log(cars)
+  const elements = cars.map(({ id, make }) => <li key={id}>{make}</li>)
 
   return (
     <ul>

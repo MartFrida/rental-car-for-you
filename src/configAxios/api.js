@@ -1,11 +1,12 @@
 import axios from "axios"
 
 export const api = axios.create({
-  baseURL: 'https://connections-api.herokuapp.com/'
+  baseURL: import.meta.env.VITE_BASE_MOCKAPI
+
 })
 
-const carInstance = axios.create({
-  baseURL: 'http://localhost:3000/api/cars/'
+export const carInstance = axios.create({
+  baseURL: import.meta.env.VITE_API_URL
 })
 
 export const fetchAllCars = async () => {
