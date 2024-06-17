@@ -1,10 +1,12 @@
 import axios from "axios"
 
+//DB on MOCKAPI
 export const api = axios.create({
   baseURL: import.meta.env.VITE_BASE_MOCKAPI
 
 })
 
+// DB on MongoDB
 export const carInstance = axios.create({
   baseURL: import.meta.env.VITE_FILE_URL
 })

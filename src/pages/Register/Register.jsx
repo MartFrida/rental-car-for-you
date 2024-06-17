@@ -20,7 +20,7 @@ const Register = () => {
         <label className="flex flex-col gap-2">
           <span>Name</span>
           <input
-            {...register("name")}
+            {...register("username")}
             placeholder="Enter the Name"
             className="border-2 border-gray rounded-md p-1"
             type="text"
