@@ -3,13 +3,22 @@ import Modal from "../../components/Modal/Modal";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { registerThunk } from "../../redux/auth/operations";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
   const { register, handleSubmit } = useForm();
   const dispatch = useDispatch();
+  const navigate = useNavigate()
   const submit = (data) => {
     console.log(data);
-    dispatch(registerThunk(data));
+    dispatch(registerThunk(data))
+      .unwrap()
+      .then(res => {
+        navigate('/login')
+        toast.info(`Hi, ${res.username}) Go to verification email!`)
+      })
+      .catch(err => console.log(err));
   };
   return (
     <Modal>
