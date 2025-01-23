@@ -1,9 +1,9 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { carInstance, clearToken, setToken } from "../../configAxios/api";
+import { api, clearToken, setToken } from "../../configAxios/api";
 
 export const registerThunk = createAsyncThunk('auth/register', async (credentials, thunkApi) => {
   try {
-    const response = await carInstance.post('auth/signup', credentials)
+    const response = await api.post('auth/signup', credentials)
     console.log(response)
     return response.data
   } catch (error) {
@@ -13,7 +13,7 @@ export const registerThunk = createAsyncThunk('auth/register', async (credential
 
 export const loginThunk = createAsyncThunk('auth/signin', async (credentials, thunkApi) => {
   try {
-    const response = await carInstance.post('auth/signin', credentials)
+    const response = await api.post('auth/signin', credentials)
     console.log(response)
     console.log(credentials)
     setToken(response.data.token)
@@ -25,7 +25,7 @@ export const loginThunk = createAsyncThunk('auth/signin', async (credentials, th
 
 export const logoutThunk = createAsyncThunk('auth/signout', async (_, thunkApi) => {
   try {
-    await carInstance.post('auth/signout')
+    await api.post('auth/signout')
     clearToken()
   } catch (error) {
     return thunkApi.rejectWithValue(error.message)
@@ -40,7 +40,8 @@ export const refreshThunk = createAsyncThunk('auth/current', async (_, thunkApi)
     return thunkApi.rejectWithValue('Token is not exist')
   }
   try {
-    const response = await carInstance.get('users/current')
+    const response = await api.get('auth/current')
+    console.log(response.data)
     return response.data
   } catch (error) {
     return thunkApi.rejectWithValue(error.message)

@@ -18,24 +18,23 @@ const persistConfig = {
   key: 'favorites',
   version: 1,
   storage,
-  whitelist: ['favoriteItems']
+  whitelist: ['favoriteItems', 'token']
 }
-
+const persistedReducer = persistReducer(persistConfig, authReducer)
 const rootReducer = combineReducers({
   carData: carReducer,
   filters: filterReducer,
-  auth: authReducer,
+  auth: persistedReducer,
 })
-const persistedReducer = persistReducer(persistConfig, rootReducer)
+
 
 // Logger
 const myMiddleware = store => next => action => {
-  console.log(action)
   next(action)
 }
 
 export const store = configureStore({
-  reducer: persistedReducer,
+  reducer: rootReducer,
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {

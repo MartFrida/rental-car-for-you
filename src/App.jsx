@@ -9,8 +9,15 @@ import Login from './components/Login/Login'
 import PrivateRoute from './routesConfig/PrivateRoute'
 import { PublicRoute } from './routesConfig/PublicRoute'
 import { AddItem } from './components/AddItem/AddItem'
+import { useDispatch } from 'react-redux'
+import { useEffect } from 'react'
+import { refreshThunk } from './redux/auth/operations'
 
 function App() {
+  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(refreshThunk())
+  }, [dispatch])
   return (
     <>
       <Header />
@@ -29,7 +36,10 @@ function App() {
           </PrivateRoute>
         } />
         <Route path='/register' element={
-          <Register />
+          <PublicRoute>
+            <Register />
+          </PublicRoute>
+
         } />
         <Route path='/login' element={
           <PublicRoute>
