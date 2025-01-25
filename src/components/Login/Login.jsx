@@ -14,12 +14,10 @@ const Login = () => {
   })
   const dispatch = useDispatch()
   const submit = (data) => {
-    console.log(data)
     dispatch(loginThunk(data))
       .unwrap()
       .then((res) => {
-        console.log(res)
-        toast.success(`Welcome ${res.email}`)
+        toast.success(`Welcome ${res.username}`)
       })
       .catch(() => { toast.error('Something went wrong!') })
   }

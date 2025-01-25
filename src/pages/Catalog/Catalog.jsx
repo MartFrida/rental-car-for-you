@@ -11,6 +11,7 @@ const Catalog = () => {
   const cars = useSelector(selectCars)
   const skip = useSelector(selectSkip)
 
+
   const handleLoadMore = (ev) => {
     dispatch(setSkip())
     dispatch(fetchCarsDataThunk({ page: 1, limit: skip }))
@@ -20,6 +21,7 @@ const Catalog = () => {
     <Container>
       <Filters />
       <Cards />
+
       {cars?.length >= 12 ? <button type="button" onClick={handleLoadMore} className="animate-bounce text-white bg-gradient-to-r from-green-400 to-emerald-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-emerald-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm p-5 text-center ml-[45%] my-8 uppercase tracking-widest">Load more</button> : null}
     </Container>
   )

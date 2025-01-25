@@ -41,7 +41,6 @@ export const refreshThunk = createAsyncThunk('auth/current', async (_, thunkApi)
   }
   try {
     const response = await api.get('auth/current')
-    console.log(response.data)
     return response.data
   } catch (error) {
     return thunkApi.rejectWithValue(error.message)

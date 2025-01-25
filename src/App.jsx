@@ -1,17 +1,19 @@
 import { Route, Routes } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { useEffect } from 'react'
+import { refreshThunk } from './redux/auth/operations'
+import PrivateRoute from './routesConfig/PrivateRoute'
+import { PublicRoute } from './routesConfig/PublicRoute'
+
 import Header from './components/Header/Header'
+import Login from './components/Login/Login'
+import { AddItem } from './components/AddItem/AddItem'
+
 import Home from './pages/Home/Home'
 import Catalog from './pages/Catalog/Catalog'
 import Favorites from './pages/Favorites/Favorites'
 import Page404 from './pages/Page404/Page404'
 import Register from './pages/Register/Register'
-import Login from './components/Login/Login'
-import PrivateRoute from './routesConfig/PrivateRoute'
-import { PublicRoute } from './routesConfig/PublicRoute'
-import { AddItem } from './components/AddItem/AddItem'
-import { useDispatch } from 'react-redux'
-import { useEffect } from 'react'
-import { refreshThunk } from './redux/auth/operations'
 
 function App() {
   const dispatch = useDispatch()

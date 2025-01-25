@@ -1,6 +1,7 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit"
 import { carReducer } from "./cars/slice"
 import { filterReducer } from './filters/slice'
+import logger from "redux-logger"
 import {
   persistStore,
   persistReducer,
@@ -26,7 +27,6 @@ const rootReducer = combineReducers({
   filters: filterReducer,
   auth: persistedReducer,
 })
-
 
 // Logger
 const myMiddleware = store => next => action => {

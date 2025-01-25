@@ -22,14 +22,14 @@ const Header = () => {
           <NavLink className='text-white mr-6  transition-colors duration-300 font-medium hover:font-bold' to='/favorites'>
             Favorites
           </NavLink>
-          <NavLink to='/catalog/new'>Add</NavLink>
+          <NavLink to='/catalog/new' className='text-white mr-6  transition-colors duration-300 font-medium hover:font-bold'>Add</NavLink>
           {!isLoggedIn &&
             <>
-              <NavLink to='/login'>Login</NavLink>
-              <NavLink to='/register'>SignUp</NavLink>
+              <NavLink to='/login' className='text-white mr-6  transition-colors duration-300 font-medium hover:font-bold'>Login</NavLink>
+              <NavLink to='/register' className='text-white mr-6  transition-colors duration-300 font-medium hover:font-bold'>SignUp</NavLink>
             </>
           }
-          {isLoggedIn && <button onClick={() => dispatch(logoutThunk())}>{userName || 'Exit'}</button>}
+          {isLoggedIn && <button onClick={() => dispatch(logoutThunk())} className='text-white mr-6  transition-colors duration-300 font-medium hover:font-bold'>{`Exit ${userName}`}</button>}
         </div>
       </header>
     </>
