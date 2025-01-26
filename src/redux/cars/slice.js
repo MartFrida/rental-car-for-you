@@ -4,7 +4,7 @@ import { fetchCarsDataThunk } from './operations'
 const initialState = {
 	items: [],
 	favoriteItems: [],
-	// filter: '',
+	filter: '',
 	page: 1,
 	limit: 12,
 	skip: 24,
@@ -16,10 +16,10 @@ const carsSlice = createSlice({
 	name: 'cars',
 	initialState,
 	reducers: {
-		// setFilter: (state, { payload }) => {
-		// 	console.log(payload)
-		// 	// state.filter = payload
-		// },
+		setFilter: (state, { payload }) => {
+			console.log(payload)
+			state.filter = payload
+		},
 		setSkip: (state) => {
 			state.skip += state.limit
 		},

@@ -13,12 +13,7 @@ const Catalog = () => {
   const dispatch = useDispatch()
   const isLoadingUser = useSelector(selectIsLoadingUserData)
   const isLoadingCars = useSelector(selectIsLoadingCarsData)
-  const filter = useSelector(selectFilterBrand)
   const cars = useSelector(selectCars)
-
-  useEffect(() => {
-    dispatch(fetchCarsDataThunk({ page: 1 }, filter))
-  }, [dispatch, filter])
 
   const handleLoadMore = (ev) => {
     dispatch(setSkip())

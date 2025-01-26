@@ -1,7 +1,7 @@
 import { createSelector } from "@reduxjs/toolkit";
 
 export const selectCars = state => {
-  const { result } = state.carData.items
+  const result = state.carData.items
   return result
 };
 export const selectLoading = state => state.carData.loading;

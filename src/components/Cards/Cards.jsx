@@ -18,7 +18,7 @@ const Cards = ({ onlyFavorites = false }) => {
   const carsNew = onlyFavorites ? favoriteCars : cars
 
   useEffect(() => {
-    (filter !== '') ? dispatch(fetchCarsDataThunk({ page, limit, make: `${filter}` })) : dispatch(fetchCarsDataThunk({ page, limit }))
+    (filter !== '') ? dispatch(fetchCarsDataThunk({ filter, page, limit })) : dispatch(fetchCarsDataThunk({ page, limit }))
   }, [dispatch, filter, limit, page])
 
   return (
