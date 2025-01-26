@@ -4,7 +4,7 @@ import { fetchCarsDataThunk } from './operations'
 const initialState = {
 	items: [],
 	favoriteItems: [],
-	filter: '',
+	// filter: '',
 	page: 1,
 	limit: 12,
 	skip: 24,
@@ -16,10 +16,10 @@ const carsSlice = createSlice({
 	name: 'cars',
 	initialState,
 	reducers: {
-		setFilter: (state, { payload }) => {
-			console.log(payload)
-			state.filter = payload
-		},
+		// setFilter: (state, { payload }) => {
+		// 	console.log(payload)
+		// 	// state.filter = payload
+		// },
 		setSkip: (state) => {
 			state.skip += state.limit
 		},
@@ -35,6 +35,7 @@ const carsSlice = createSlice({
 	extraReducers: builder => {
 		builder
 			.addCase(fetchCarsDataThunk.fulfilled, (state, { payload }) => {
+				console.log(payload)
 				state.items = payload
 				state.loading = false
 			})
@@ -48,5 +49,5 @@ const carsSlice = createSlice({
 	},
 })
 
-export const { setFilter, setSkip, setToFavorites, deleteFromFavorites } = carsSlice.actions
+export const { setSkip, setToFavorites, deleteFromFavorites } = carsSlice.actions
 export const carReducer = carsSlice.reducer

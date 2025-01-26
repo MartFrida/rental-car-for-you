@@ -2,8 +2,8 @@ import React, { useState } from "react"
 import { useForm, Controller } from "react-hook-form"
 import { useDispatch, useSelector } from "react-redux"
 import ReactSelect from "react-select"
-import { setFilter } from "../../redux/cars/slice"
-import { selectFilter } from "../../redux/selectors"
+import { setBrand } from "../../redux/filters/slice"
+import { fetchCarsDataThunk } from '../../redux/cars/operations'
 import brands from '../../data/brands.json'
 
 const carsBrandFilter = brands.map(brand => {
@@ -14,10 +14,20 @@ const defaultValues = { value: "All brands", label: "All brands" }
 
 const Filters = () => {
   const { handleSubmit, reset, register, control } = useForm();
-  const filter = useSelector(selectFilter)
   const dispatch = useDispatch()
-  const submit = data => {
-    return ((data.CarBrand.value === 'All brands')) ? dispatch(setFilter('')) : dispatch(setFilter(data.CarBrand.value))
+
+  const getBrands = () => {
+    const brands = defaultValues
+    brands.push(...brands.map(brand => {
+      return { value: brand, label: brand }
+    }))
+    return brands
+  }
+
+  const submit = formData => {
+    console.log(formData)
+    dispatch(setBrand(formData.CarBrand.value))
+    dispatch(fetchCarsDataThunk({ page: 1, filters: { brand: formData.CarBrand.value } }))
   }
 
   return (

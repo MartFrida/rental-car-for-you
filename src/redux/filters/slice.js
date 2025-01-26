@@ -14,7 +14,8 @@ const filtersSlice = createSlice({
   initialState,
   reducers: {
     setBrand: (state, { payload }) => {
-      state.brand = payload
+      console.log(payload)
+      state.filters.brand = payload
     },
     setMileageFrom: (state, { payload }) => {
       state.mileageFrom = payload
