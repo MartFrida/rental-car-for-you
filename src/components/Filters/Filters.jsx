@@ -11,6 +11,7 @@ const Filters = () => {
 
   const getBrands = () => {
     const brands = [{ value: '', label: 'All brands' }]
+    console.log(makes)
     brands.push(...makes.map(make => {
       return { value: make, label: make }
     }))
@@ -32,8 +33,8 @@ const Filters = () => {
 
   const submit = formData => {
     console.log(formData)
-    dispatch(setBrand(formData.CarBrand || null))
-    // dispatch(setBrand(formData.make || null))
+    // dispatch(setBrand(formData.CarBrand || null))
+    dispatch(setBrand(formData.make || null))
     dispatch(setPrice(formData.price || null))
     dispatch(setMileageFrom(formData.mileage_from))
     dispatch(setMileageTo(formData.mileage_to))
@@ -44,29 +45,28 @@ const Filters = () => {
     dispatch(resetFilters())
   }, [dispatch])
 
+
   return (
-    <form onSubmit={handleSubmit(submit)} className="form mt-20">
-      <section>
-        <div>
-          <label>Car Brand</label>
-          <div
-            name="CarBrand"
-            control={control}
-            dataset={getBrands()}
-            placeholder='Enter the text'
-          />
-        </div>
-        <div>
-          <label>Price/ 1 hour</label>
-          <div
-            name="price"
-            control={control}
-            dataset={getPriceRange(300)}
-            placeholder='To $'
-          />
-        </div>
-        <div>
-          <span>Сar mileage / km</span>
+    <>
+
+      <form onSubmit={handleSubmit(submit)} className="form mt-20">
+        <section className="mt-8">
+          <div>
+            <label>Car Brand</label>
+            <select {...register("make")}>
+              {makes.map(brand => <option key={brand} value={brand}>{brand}</option>)}
+            </select>
+          </div>
+          <div>
+            <label>Price/ 1 hour</label>
+            <input
+              name="price"
+              {...register('price')}
+              control={control}
+              dataset={getPriceRange(300)}
+              placeholder='To $'
+            />
+          </div>
           <div>
             <label htmlFor='mileage_from'>Сar mileage From</label>
             <input
@@ -84,10 +84,12 @@ const Filters = () => {
               type='number'
               autoComplete='off' />
           </div>
-        </div>
-      </section>
-      <button type='submit' onClick={handleSearchClick} className="text-white bg-gradient-to-r from-green-400 to-emerald-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-emerald-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 mt-3 uppercase">Search</button>
-    </form>
+        </section>
+        <button type='submit' onClick={handleSearchClick} className="text-white bg-gradient-to-r from-green-400 to-emerald-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-emerald-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 mt-3 uppercase">Search</button>
+      </form>
+
+    </>
+
   )
 }
 
