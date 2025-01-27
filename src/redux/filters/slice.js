@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit"
 
 const initialState = {
   filters: {
-    brand: null,
+    make: null,
     year: null,
     mileageFrom: null,
     mileageTo: null,
@@ -16,7 +16,10 @@ const filtersSlice = createSlice({
   reducers: {
     setBrand: (state, { payload }) => {
       console.log(payload)
-      state.filters.brand = payload
+      state.make = payload
+    },
+    setYeaar: (state, { payload }) => {
+      state.year = payload
     },
     setMileageFrom: (state, { payload }) => {
       state.mileageFrom = payload
@@ -27,8 +30,11 @@ const filtersSlice = createSlice({
     setPrice: (state, { payload }) => {
       state.price = payload
     },
+    resetFilters: () => {
+      return initialState
+    }
   }
 })
 
-export const { setBrand, setMileageFrom, setMileageTo, setPrice } = filtersSlice.actions
+export const { setBrand, setYeaar, setMileageFrom, setMileageTo, setPrice, resetFilters } = filtersSlice.actions
 export const filterReducer = filtersSlice.reducer
