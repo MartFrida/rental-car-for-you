@@ -5,8 +5,6 @@ const initialState = {
 	items: [],
 	favoriteItems: [],
 	filter: {
-		// make: 'Volvo',
-		// year: 2020,
 		make: null,
 		year: null,
 		mileageFrom: null,
@@ -31,22 +29,6 @@ const carsSlice = createSlice({
 			state.page = action.payload;
 		},
 
-		// setBrand: (state, { payload }) => {
-		// 	console.log(payload)
-		// 	state.filter.make = payload
-		// },
-		// setYeaar: (state, { payload }) => {
-		// 	state.filter.year = payload
-		// },
-		// setMileageFrom: (state, { payload }) => {
-		// 	state.filter.mileageFrom = payload
-		// },
-		// setMileageTo: (state, { payload }) => {
-		// 	state.filter.mileageTo = payload
-		// },
-		// setPrice: (state, { payload }) => {
-		// 	state.filter.price = payload
-		// },
 		resetFilters: () => {
 			return initialState
 		},
@@ -59,7 +41,6 @@ const carsSlice = createSlice({
 		deleteFromFavorites: (state, { payload }) => {
 			const index = state.favoriteItems.findIndex(car => car._id === payload._id)
 			state.favoriteItems.splice(index, 1)
-			// state.favoriteItems = state.favoriteItems.filter(item => item._id !== payload)
 		},
 		resetCarsState: (state) => {
 			state.items = []
@@ -69,7 +50,6 @@ const carsSlice = createSlice({
 	extraReducers: builder => {
 		builder
 			.addCase(fetchCarsDataThunk.fulfilled, (state, { payload }) => {
-				console.log(payload)
 				state.items = payload
 				state.loading = false
 			})

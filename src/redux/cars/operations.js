@@ -4,11 +4,8 @@ import { CARS_PER_PAGE } from '../../data/constants'
 
 export const fetchCarsDataThunk = createAsyncThunk('car/fetchAllByFilter', async ({ filters, page }, thunkApi) => {
 	try {
-		console.log('Filters in thunk:', filters);
 		const queryOptions = {
 			params: {
-				// make: "Volvo",
-				// year: 2020,
 				...filters,
 				limit: CARS_PER_PAGE,
 				page,

@@ -6,18 +6,24 @@ import { Loader } from "../../components/Loader/Loader"
 import { selectCars } from '../../redux/selectors'
 import { fetchCarsDataThunk } from "../../redux/cars/operations"
 import { setSkip } from "../../redux/cars/slice"
-import { selectIsLoadingUserData, selectIsLoadingCarsData, selectFilterBrand } from '../../redux/selectors'
+import { selectIsLoadingUserData, selectIsLoadingCarsData, selectFilter, selectPage } from '../../redux/selectors'
 import { Container } from "@mui/material"
 
 const Catalog = () => {
   const dispatch = useDispatch()
   const isLoadingUser = useSelector(selectIsLoadingUserData)
   const isLoadingCars = useSelector(selectIsLoadingCarsData)
+  const filter = useSelector(selectFilter);
+  const page = useSelector(selectPage);
   const cars = useSelector(selectCars)
+
+  useEffect(() => {
+    dispatch(fetchCarsDataThunk({ filter, page }));
+  }, [dispatch, filter, page]);
 
   const handleLoadMore = (ev) => {
     dispatch(setSkip())
-    dispatch(fetchCarsDataThunk({ page: 1 }))
+    dispatch(fetchCarsDataThunk({ page: page + 1 }))
     ev.target.blur()
   }
   return (
