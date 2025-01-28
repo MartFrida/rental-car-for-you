@@ -53,5 +53,5 @@ const carsSlice = createSlice({
 	},
 })
 
-export const { setSkip, setToFavorites, deleteFromFavorites, resetCarsState } = carsSlice.actions
+export const { setFilter, setSkip, setToFavorites, deleteFromFavorites, resetCarsState } = carsSlice.actions
 export const carReducer = carsSlice.reducer

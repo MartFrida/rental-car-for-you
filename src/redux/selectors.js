@@ -18,6 +18,11 @@ export const selectFilterYear = state => state.filters.year;
 export const selectFilterMileageFrom = state => state.filters.mileageFrom;
 export const selectFilterMileageTo = state => state.filters.mileageTo;
 export const selectFilterPrice = state => state.filters.price;
+export const selectFilters = createSelector(
+  [selectFilterBrand],
+  (brand) => {
+    return { make: brand }
+  })
 
 export const selectIsLoggedIn = state => state.auth.isLoggedIn;
 export const selectUserName = state => state.auth.user.username;

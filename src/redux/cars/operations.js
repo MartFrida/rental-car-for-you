@@ -6,12 +6,15 @@ export const fetchCarsDataThunk = createAsyncThunk('car/fetchAllByFilter', async
 	try {
 		const queryOptions = {
 			params: {
-				filters,
+				// make: "Volvo",
+				// year: 2020,
+				...filters,
 				limit: CARS_PER_PAGE,
 				page,
 			}
 		}
-		const { data } = await api.get('cars/filters', queryOptions.params)
+		const { data } = await api.get('cars/filters', queryOptions)
+		console.log(filters)
 		console.log(data)
 		return data
 	} catch (error) {

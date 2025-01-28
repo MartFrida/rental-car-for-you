@@ -1,23 +1,26 @@
 import React, { useEffect } from "react"
 import { useForm, Controller } from "react-hook-form"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { setBrand, setPrice, setMileageFrom, setMileageTo, resetFilters } from "../../redux/filters/slice"
-import { resetCarsState } from '../../redux/cars/slice'
+import { setFilter, resetCarsState } from '../../redux/cars/slice'
+import { selectFilters } from '../../redux/selectors'
+import { fetchCarsDataThunk } from '../../redux/cars/operations'
 import makes from '../../data/brands.json'
 
 const Filters = () => {
   const { handleSubmit, reset, register, control } = useForm();
   const dispatch = useDispatch()
+  const filters = useSelector(selectFilters)
 
-  const getBrands = () => {
-    const brands = [{ value: '', label: 'All brands' }]
-    console.log(makes)
-    brands.push(...makes.map(make => {
-      return { value: make, label: make }
-    }))
+  // const getBrands = () => {
+  //   const brands = [{ value: '', label: 'All brands' }]
+  //   console.log(makes)
+  //   brands.push(...makes.map(make => {
+  //     return { value: make, label: make }
+  //   }))
 
-    return brands
-  }
+  //   return brands
+  // }
 
   function getPriceRange(maxPrice) {
     let range = [{ value: maxPrice, label: 'All' }]
@@ -28,6 +31,7 @@ const Filters = () => {
   }
 
   function handleSearchClick(ev) {
+    // dispatch(fetchCarsDataThunk({ make: "Volvo", page: 1 }))
     ev.currentTarget.blur()
   }
 
@@ -39,16 +43,18 @@ const Filters = () => {
     dispatch(setMileageFrom(formData.mileage_from))
     dispatch(setMileageTo(formData.mileage_to))
     dispatch(resetCarsState())
+    dispatch(setFilter(formData))
+    dispatch(fetchCarsDataThunk({ filter: { make: formData.make }, page: 1 }))
+
   }
 
-  useEffect(() => {
-    dispatch(resetFilters())
-  }, [dispatch])
+  // useEffect(() => {
+  //   dispatch(resetFilters())
+  // }, [dispatch])
 
 
   return (
     <>
-
       <form onSubmit={handleSubmit(submit)} className="form mt-20">
         <section className="mt-8">
           <div>
@@ -87,7 +93,6 @@ const Filters = () => {
         </section>
         <button type='submit' onClick={handleSearchClick} className="text-white bg-gradient-to-r from-green-400 to-emerald-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-emerald-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 mt-3 uppercase">Search</button>
       </form>
-
     </>
 
   )
