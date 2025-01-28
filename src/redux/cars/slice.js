@@ -4,7 +4,15 @@ import { fetchCarsDataThunk } from './operations'
 const initialState = {
 	items: [],
 	favoriteItems: [],
-	filter: '',
+	filter: {
+		// make: 'Volvo',
+		// year: 2020,
+		make: null,
+		year: null,
+		mileageFrom: null,
+		mileageTo: null,
+		price: null
+	},
 	page: 1,
 	limit: 12,
 	skip: 24,
@@ -16,9 +24,31 @@ const carsSlice = createSlice({
 	name: 'cars',
 	initialState,
 	reducers: {
-		setFilter: (state, { payload }) => {
-			console.log(payload)
-			state.filter = payload
+		updateFilter(state, action) {
+			state.filter = { ...state.filter, ...action.payload };
+		},
+		updatePage(state, action) {
+			state.page = action.payload;
+		},
+
+		// setBrand: (state, { payload }) => {
+		// 	console.log(payload)
+		// 	state.filter.make = payload
+		// },
+		// setYeaar: (state, { payload }) => {
+		// 	state.filter.year = payload
+		// },
+		// setMileageFrom: (state, { payload }) => {
+		// 	state.filter.mileageFrom = payload
+		// },
+		// setMileageTo: (state, { payload }) => {
+		// 	state.filter.mileageTo = payload
+		// },
+		// setPrice: (state, { payload }) => {
+		// 	state.filter.price = payload
+		// },
+		resetFilters: () => {
+			return initialState
 		},
 		setSkip: (state) => {
 			state.skip += state.limit
@@ -45,6 +75,7 @@ const carsSlice = createSlice({
 			})
 			.addCase(fetchCarsDataThunk.pending, state => {
 				state.loading = true
+				state.error = null
 			})
 			.addCase(fetchCarsDataThunk.rejected, (state, { payload }) => {
 				state.loading = false
@@ -53,5 +84,5 @@ const carsSlice = createSlice({
 	},
 })
 
-export const { setFilter, setSkip, setToFavorites, deleteFromFavorites, resetCarsState } = carsSlice.actions
+export const { updateFilter, updatePage, resetFilters, setSkip, setToFavorites, deleteFromFavorites, resetCarsState } = carsSlice.actions
 export const carReducer = carsSlice.reducer

@@ -1,6 +1,5 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit"
 import { carReducer } from "./cars/slice"
-import { filterReducer } from './filters/slice'
 import logger from "redux-logger"
 import {
   persistStore,
@@ -24,7 +23,6 @@ const persistConfig = {
 const persistedReducer = persistReducer(persistConfig, authReducer)
 const rootReducer = combineReducers({
   carData: carReducer,
-  filters: filterReducer,
   auth: persistedReducer,
 })
 

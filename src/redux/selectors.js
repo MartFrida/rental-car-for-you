@@ -13,16 +13,17 @@ export const selectFilter = state => state.carData.filter;
 export const selectFavorites = state => state.carData.favoriteItems;
 export const selectIsLoadingCarsData = state => state.carData.loading;
 
-export const selectFilterBrand = state => state.filters.make;
-export const selectFilterYear = state => state.filters.year;
-export const selectFilterMileageFrom = state => state.filters.mileageFrom;
-export const selectFilterMileageTo = state => state.filters.mileageTo;
-export const selectFilterPrice = state => state.filters.price;
-export const selectFilters = createSelector(
-  [selectFilterBrand],
-  (brand) => {
-    return { make: brand }
-  })
+export const selectFilterBrand = state => state.carData.filter.make;
+export const selectFilterYear = state => state.carData.filter.year;
+export const selectFilterMileageFrom = state => state.carData.filter.mileageFrom;
+export const selectFilterMileageTo = state => state.carData.filter.mileageTo;
+export const selectFilterPrice = state => state.carData.filter.price;
+
+// export const selectFilters = createSelector(
+//   [selectFilterBrand],
+//   (brand) => {
+//     return { make: brand }
+//   })
 
 export const selectIsLoggedIn = state => state.auth.isLoggedIn;
 export const selectUserName = state => state.auth.user.username;
