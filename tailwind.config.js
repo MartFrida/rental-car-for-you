@@ -21,9 +21,6 @@ module.exports = {
     //   white: '#fff',
     // },
     extend: {
-      backgroundImage: {
-        'heropattern': "url('/img/car-leaving-smartphone.jpg')",
-      }
     },
   },
   plugins: [],
