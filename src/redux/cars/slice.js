@@ -29,8 +29,8 @@ const carsSlice = createSlice({
 			state.page = action.payload;
 		},
 
-		resetFilters: () => {
-			return initialState
+		resetFilters: (state) => {
+			state.filter = initialState.filter
 		},
 		setSkip: (state) => {
 			state.skip += state.limit

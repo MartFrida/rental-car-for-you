@@ -14,8 +14,6 @@ export const registerThunk = createAsyncThunk('auth/register', async (credential
 export const loginThunk = createAsyncThunk('auth/signin', async (credentials, thunkApi) => {
   try {
     const response = await api.post('auth/signin', credentials)
-    console.log(response)
-    console.log(credentials)
     setToken(response.data.token)
     return response.data
   } catch (error) {
